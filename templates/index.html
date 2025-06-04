@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wykres z 5 liczb</title>
+</head>
+<body>
+    <h1>Podaj 5 liczb</h1>
+    <form method="POST">
+        {% for i in range(1, 6) %}
+            <input type="number" name="num{{ i }}" step="any" required><br>
+        {% endfor %}
+        <button type="submit">Generuj wykres</button>
+    </form>
+    {% if request.method == "POST" %}
+        <h2>Twój wykres:</h2>
+        <img src="data:image/png;base64,{{ plot_url }}" alt="Wykres">
+    {% endif %}
+</body>
+</html>
